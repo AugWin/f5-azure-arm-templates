@@ -518,8 +518,6 @@
         "extSubnetPrivateAddress1": "[concat(parameters('vnetAddressPrefix'), '.2.5')]",
         "intSubnetPrivateAddress1": "[concat(parameters('vnetAddressPrefix'), '.3.5')]",
         "availabilitySetName": "[concat(variables('dnsLabel'), '-avset')]",
-        "zoneMappings": "[replace(toLower(string(providers('Microsoft.Compute', 'virtualMachines').zoneMappings)), ' ', '')]",
-        "zonesAvailable": "[contains(variables('zoneMappings'), concat('\"', variables('location'), '\"'))]",
         "availabilitySetId": {
             "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]"
         },
