@@ -1055,7 +1055,6 @@
                 "PlatformFaultDomainCount": 2,
                 "PlatformUpdateDomainCount": 2
             },
-            "condition": "[not(variables('zonesAvailable'))]",
             "tags": "[if(empty(variables('tagValues')), json('null'), variables('tagValues'))]",
             "type": "Microsoft.Compute/availabilitySets"
         },
@@ -1108,7 +1107,6 @@
             "name": "[concat(variables('dnsLabel'), '-', variables('instanceName'), '0')]",
             "plan": "[if(variables('useCustomImage'), json('null'), variables('imagePlan'))]",
             "properties": {
-                "availabilitySet": "[if(not(variables('zonesAvailable')), variables('availabilitySetId'), json('null'))]",
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": true,
@@ -1125,7 +1123,6 @@
                 "storageProfile": "[if(variables('useCustomImage'), variables('storageProfileArray').customImage, variables('storageProfileArray').platformImage)]"
             },
             "tags": "[if(empty(variables('tagValues')), json('null'), variables('tagValues'))]",
-            "zones": "[if(variables('zonesAvailable'), array(1), json('null'))]",
             "type": "Microsoft.Compute/virtualMachines"
         },
         {
@@ -1144,7 +1141,6 @@
             "name": "[concat(variables('dnsLabel'), '-', variables('instanceName'), '1')]",
             "plan": "[if(variables('useCustomImage'), json('null'), variables('imagePlan'))]",
             "properties": {
-                "availabilitySet": "[if(not(variables('zonesAvailable')), variables('availabilitySetId'), json('null'))]",
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": true,
@@ -1161,7 +1157,6 @@
                 "storageProfile": "[if(variables('useCustomImage'), variables('storageProfileArray').customImage, variables('storageProfileArray').platformImage)]"
             },
             "tags": "[if(empty(variables('tagValues')), json('null'), variables('tagValues'))]",
-            "zones": "[if(variables('zonesAvailable'), array(2), json('null'))]",
             "type": "Microsoft.Compute/virtualMachines"
         },
         {
